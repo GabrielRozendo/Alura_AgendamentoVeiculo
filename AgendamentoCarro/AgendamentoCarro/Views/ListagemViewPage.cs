@@ -4,12 +4,12 @@ using Xamarin.Forms;
 
 namespace AgendamentoCarro
 {
-    public partial class AgendamentoCarroPage : ContentPage
+    public partial class ListagemViewPage : ContentPage
     {
         public List<Veiculo> Veiculos { get; set; }
 
 
-        public AgendamentoCarroPage()
+        public ListagemViewPage()
         {
 
             InitializeComponent();
@@ -29,7 +29,8 @@ namespace AgendamentoCarro
         void Handle_ItemTapped(object sender, Xamarin.Forms.ItemTappedEventArgs e)
         {
             var veiculo = (Veiculo)e.Item;
-            DisplayAlert("Alura", $"O item {veiculo.Nome} foi tocado!{Environment.NewLine}{veiculo.PrecoFormatado}", "Blz");
+            //DisplayAlert("Alura", $"O item {veiculo.Nome} foi tocado!{Environment.NewLine}{veiculo.PrecoFormatado}", "Blz");
+            Navigation.PushAsync(new DetalheViewPage(veiculo));
         }
     }
 }

@@ -8,7 +8,7 @@ namespace AgendamentoCarro
         {
             InitializeComponent();
 
-            MainPage = new AgendamentoCarroPage();
+            MainPage = new NavigationPage(new ListagemViewPage());
         }
 
         protected override void OnStart()

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:AgendamentoCarro" x:Class="AgendamentoCarro.AgendamentoCarroPage">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:AgendamentoCarro" x:Class="AgendamentoCarro.ListagemViewPage"
+    Title="Test Drive">
     <StackLayout Margin="10">
-        <ListView x:Name="listViewVeiculos" ItemsSource="{Binding Veiculos}" Margin="0,25,0,0" ItemTapped="Handle_ItemTapped">
+        <ListView x:Name="listViewVeiculos" ItemsSource="{Binding Veiculos}" ItemTapped="Handle_ItemTapped">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
