@@ -8,6 +8,7 @@ namespace AgendamentoCarro
     public partial class DetalheViewPage : ContentPage
     {
         public Veiculo veiculo { get; set; }
+
         const decimal PrecoFreioAbs = 800;
         const decimal PrecoArCondicionado = 1000;
         const decimal PrecoMP3Player = 500;

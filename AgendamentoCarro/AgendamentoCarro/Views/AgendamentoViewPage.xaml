@@ -1,5 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="AgendamentoCarro.AgendamentoViewPage" Title="{Binding veiculo.Nome}">
     <ContentPage.Content>
+        <StackLayout>
+            <TableView>
+                <TableRoot>
+                    <TableSection Title="Seus Dados">
+                        <EntryCell Label="Nome:" Placeholder="Seu nome completo!" Keyboard="Text" Text="{Binding Nome, Mode=TwoWay}" />
+                        <EntryCell Label="Telefone:" Placeholder="Telefone" Keyboard="Telephone" Text="{Binding Telefone, Mode=TwoWay}" />
+                        <EntryCell Label="Email:" Placeholder="E-m@il" Keyboard="Email" Text="{Binding Email, Mode=TwoWay}" />
+                    </TableSection>
+                    <TableSection Title="Agendamento">
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal" Margin="12,0,0,0">
+                                <Label Text="Data:" VerticalTextAlignment="Center" />
+                                <DatePicker Date="{Binding Data}" x:Name="DatePicker" VerticalOptions="CenterAndExpand" />
+                            </StackLayout>
+                        </ViewCell>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal" Margin="12,0,0,0">
+                                <Label Text="Hora:" VerticalTextAlignment="Center" />
+                                <TimePicker Time="{Binding Hora}" VerticalOptions="CenterAndExpand" />
+                            </StackLayout>
+                        </ViewCell>
+                    </TableSection>
+                </TableRoot>
+            </TableView>
+
+            <Button Text="Agendar" Clicked="Agendar_Clicked" VerticalOptions="End" FontAttributes="Bold"/>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>
