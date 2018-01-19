@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="AgendamentoCarro.AgendamentoViewPage" Title="{Binding veiculo.Nome}">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="AgendamentoCarro.AgendamentoViewPage" Title="{Binding Veiculo.Nome, StringFormat='Agendamento {0}'}">
     <ContentPage.Content>
         <StackLayout>
-            <TableView>
+            <TableView BackgroundColor="Transparent">
                 <TableRoot>
                     <TableSection Title="Seus Dados">
                         <EntryCell Label="Nome:" Placeholder="Seu nome completo!" Keyboard="Text" Text="{Binding Nome, Mode=TwoWay}" />
@@ -11,22 +11,33 @@
                     </TableSection>
                     <TableSection Title="Agendamento">
                         <ViewCell>
-                            <StackLayout Orientation="Horizontal" Margin="12,0,0,0">
+                            <StackLayout Orientation="Horizontal" Margin="15,0,0,0">
                                 <Label Text="Data:" VerticalTextAlignment="Center" />
                                 <DatePicker Date="{Binding Data}" x:Name="DatePicker" VerticalOptions="CenterAndExpand" />
-                            </StackLayout>
+                                <!--   </StackLayout>
                         </ViewCell>
                         <ViewCell>
                             <StackLayout Orientation="Horizontal" Margin="12,0,0,0">
+                               -->
                                 <Label Text="Hora:" VerticalTextAlignment="Center" />
                                 <TimePicker Time="{Binding Hora}" VerticalOptions="CenterAndExpand" />
                             </StackLayout>
                         </ViewCell>
                     </TableSection>
+                    <TableSection Title="{Binding Veiculo.Nome, StringFormat='Veiculo {0}'}">
+                        <!--<ViewCell>
+                            <Label Text="{Binding Veiculo.Nome}" TextColor="Gray" />
+                        </ViewCell>-->
+                        <SwitchCell Text="{Binding Veiculo.TextoArCondicionado}" On="{Binding Veiculo.TemArCondicionado}" IsEnabled="false" />
+                        <SwitchCell Text="{Binding Veiculo.TextoFreioAbs}" On="{Binding Veiculo.TemFreioAbs}" IsEnabled="false" />
+                        <SwitchCell Text="{Binding Veiculo.TextoMP3Player}" On="{Binding Veiculo.TemMP3Player}" IsEnabled="false" />
+                        <ViewCell>
+                            <Label Text="{Binding Veiculo.TextoValorTotal}"  Margin="20,0,0,0" FontAttributes="Bold" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" />
+                        </ViewCell>
+                    </TableSection>
                 </TableRoot>
             </TableView>
-
-            <Button Text="Agendar" Clicked="Agendar_Clicked" VerticalOptions="End" FontAttributes="Bold"/>
+            <Button Text="Agendar" Clicked="Agendar_Clicked" VerticalOptions="End" FontAttributes="Bold" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
