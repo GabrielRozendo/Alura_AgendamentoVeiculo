@@ -8,12 +8,17 @@ namespace AgendamentoCarro
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new ListagemViewPage());
+            MainPage = new LoginViewPage();
         }
 
         protected override void OnStart()
         {
             // Handle when your app starts
+            MessagingCenter.Subscribe<Usuario>(this, "SucessoLogin",
+               (usuario) =>
+            {
+                MainPage = new NavigationPage(new ListagemViewPage());
+            });
         }
 
         protected override void OnSleep()

@@ -1,7 +1,4 @@
-﻿using System;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
-using System.Windows.Input;
+﻿using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace AgendamentoCarro
@@ -9,7 +6,6 @@ namespace AgendamentoCarro
     public class DetalheViewModel : BaseViewModel
     {
         public ICommand ProximoCommand { get; set; }
-
 
         public Veiculo Veiculo { get; set; }
 
