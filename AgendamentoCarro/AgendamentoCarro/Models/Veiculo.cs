@@ -5,7 +5,7 @@ namespace AgendamentoCarro
     {
         public string Nome { get; set; }
         public decimal Preco { get; set; }
-        public string PrecoFormatado => string.Format($"R$ {Preco}");
+        public string PrecoFormatado => Preco.ToMoeda();// string.Format($"R$ {Preco}");
 
         public decimal PrecoFreioAbs = 800;
         public decimal PrecoArCondicionado = 1000;

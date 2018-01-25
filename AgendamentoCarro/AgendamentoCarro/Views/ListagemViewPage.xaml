@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:AgendamentoCarro" x:Class="AgendamentoCarro.ListagemViewPage" Title="Test Drive">
-    <ContentPage.BindingContext>
-        <local:ListagemViewModel />
-    </ContentPage.BindingContext>
-    <StackLayout Margin="10">
-        <ListView x:Name="listViewVeiculos" ItemsSource="{Binding Veiculos}" ItemTapped="Handle_ItemTapped">
+    <StackLayout Margin="0,25">
+        <ActivityIndicator IsRunning="{Binding Busy}" IsVisible="{Binding Busy}" />
+        <ListView x:Name="listViewVeiculos" ItemsSource="{Binding Veiculos}" SelectedItem="{Binding VeiculoSelecionado}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>

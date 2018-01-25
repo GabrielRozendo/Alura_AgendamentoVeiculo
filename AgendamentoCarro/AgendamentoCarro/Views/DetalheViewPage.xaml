@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="AgendamentoCarro.DetalheViewPage" Title="{Binding Veiculo.Nome}">
     <ContentPage.Content>
         <StackLayout Padding="0">
-            <Label Text="Escolha os opcionais" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />
+            <Label Text="Escolha os opcionais" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Margin="0,15,0,0" />
             <TableView Intent="Settings" BackgroundColor="Transparent">
                 <TableRoot>
                     <TableSection Title="Acessórios">
@@ -15,7 +15,7 @@
                     </TableSection>
                 </TableRoot>
             </TableView>
-            <Button x:Name="buttonProximo" Text="Próximo" Clicked="Proximo_Clicked" VerticalOptions="End" />
+            <Button x:Name="buttonProximo" Text="Próximo" Command="{Binding ProximoCommand}" VerticalOptions="End" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -37,7 +37,7 @@
                     </TableSection>
                 </TableRoot>
             </TableView>
-            <Button Text="Agendar" Clicked="Agendar_Clicked" VerticalOptions="End" FontAttributes="Bold" />
+            <Button Text="Agendar" Command="{Binding AgendarCommand}" VerticalOptions="End" FontAttributes="Bold" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

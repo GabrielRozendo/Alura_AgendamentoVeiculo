@@ -6,17 +6,30 @@ namespace AgendamentoCarro
 {
     public partial class ListagemViewPage : ContentPage
     {
+        public ListagemViewModel ViewModel { get; set; }
 
         public ListagemViewPage()
         {
             InitializeComponent();
-         }
+            this.ViewModel = new ListagemViewModel();
+            this.BindingContext = this.ViewModel;
+        }
 
-        void Handle_ItemTapped(object sender, Xamarin.Forms.ItemTappedEventArgs e)
+        protected async override void OnAppearing()
         {
-            var veiculo = (Veiculo)e.Item;
-            //DisplayAlert("Alura", $"O item {veiculo.Nome} foi tocado!{Environment.NewLine}{veiculo.PrecoFormatado}", "Blz");
-            Navigation.PushAsync(new DetalheViewPage(veiculo));
+            base.OnAppearing();
+            MessagingCenter.Subscribe<Veiculo>(this, "VeiculoSelecionado", (msg) =>
+            {
+                Navigation.PushAsync(new DetalheViewPage(msg));
+            });
+
+            await this.ViewModel.GetVeiculos();
+        }
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            MessagingCenter.Unsubscribe<Veiculo>(this, "VeiculoSelecionado");
         }
     }
 }

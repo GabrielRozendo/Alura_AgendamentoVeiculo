@@ -1,16 +1,15 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace AgendamentoCarro
 {
-    public class DetalheViewModel : INotifyPropertyChanged
+    public class DetalheViewModel : BaseViewModel
     {
-        public event PropertyChangedEventHandler PropertyChanged;
-        public void OnPropertyChanged([CallerMemberName]string name = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
-        }
+        public ICommand ProximoCommand { get; set; }
+
 
         public Veiculo Veiculo { get; set; }
 
@@ -59,6 +58,11 @@ namespace AgendamentoCarro
         {
             this.Veiculo = veiculo;
             this.Veiculo.ValorTotal = veiculo.Preco;
+
+            ProximoCommand = new Command(() =>
+            {
+                MessagingCenter.Send<Veiculo>(this.Veiculo, "Proximo");
+            });
         }
     }
 }

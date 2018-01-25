@@ -16,9 +16,19 @@ namespace AgendamentoCarro
             BindingContext = new DetalheViewModel(veiculo);
         }
 
-        void Proximo_Clicked(object sender, System.EventArgs e)
+        protected override void OnAppearing()
         {
-            Navigation.PushAsync(new AgendamentoViewPage(Veiculo));
+            base.OnAppearing();
+            MessagingCenter.Subscribe<Veiculo>(this, "Proximo", (msg) =>
+            {
+                Navigation.PushAsync(new AgendamentoViewPage(msg));
+            });
+        }
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            MessagingCenter.Unsubscribe<Veiculo>(this, "Proximo");
         }
     }
 }
