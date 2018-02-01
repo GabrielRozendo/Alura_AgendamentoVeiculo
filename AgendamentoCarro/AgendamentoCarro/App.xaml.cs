@@ -17,7 +17,8 @@ namespace AgendamentoCarro
             MessagingCenter.Subscribe<Usuario>(this, "SucessoLogin",
                (usuario) =>
             {
-                MainPage = new NavigationPage(new ListagemViewPage());
+                //MainPage = new NavigationPage(new ListagemViewPage());
+                MainPage = new MasterDetailView(usuario);  
             });
         }
 

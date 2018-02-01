@@ -41,6 +41,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\MasterDetailView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\MasterView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
@@ -71,6 +79,15 @@
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="Models\Login.cs" />
     <Compile Include="ViewModels\Services\LoginService.cs" />
+    <Compile Include="Views\MasterDetailView.xaml.cs">
+      <DependentUpon>MasterDetailView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MasterView.xaml.cs">
+      <DependentUpon>MasterView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\MasterViewModel.cs" />
+    <Compile Include="Converters\NegativoConverter.cs" />
+    <Compile Include="Converters\EditandoConverter.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core">
@@ -100,6 +117,7 @@
     <Folder Include="Models\" />
     <Folder Include="ViewModels\" />
     <Folder Include="ViewModels\Services\" />
+    <Folder Include="Converters\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.2.5.0.122203\build\portable-win+net45+wp80+win81+wpa81\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.2.5.0.122203\build\portable-win+net45+wp80+win81+wpa81\Xamarin.Forms.targets')" />

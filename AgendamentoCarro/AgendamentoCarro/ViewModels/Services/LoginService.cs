@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 using Xamarin.Forms;
 
 namespace AgendamentoCarro
@@ -19,22 +20,27 @@ namespace AgendamentoCarro
                 });
 
                 cliente.BaseAddress = new Uri("https://aluracar.herokuapp.com");
+                HttpResponseMessage resultado = null;
                 try
                 {
-                    var resultado = await cliente.PostAsync("/login", camposFormulario);
-
-                    if (resultado.IsSuccessStatusCode)
-                        MessagingCenter.Send<Usuario>(new Usuario(), "SucessoLogin");
-                    else
-                        MessagingCenter.Send<LoginException>(new LoginException("Usuário ou senha inválidos"), "FalhaLogin");
+                    resultado = await cliente.PostAsync("/login", camposFormulario);
                 }
                 catch
                 {
                     MessagingCenter.Send<LoginException>(new LoginException(@"Ocorreu um erro de comunicação com o servidor.
 Por favor verifique sua conexão e tente novamente."), "FalhaLogin");
                 }
-            }
 
+                if (resultado.IsSuccessStatusCode)
+                {
+                    var conteudoResultado = await resultado.Content.ReadAsStringAsync();
+                    var resultadoLogin = JsonConvert.DeserializeObject<ResultadoLogin>(conteudoResultado);
+
+                    MessagingCenter.Send<Usuario>(resultadoLogin.usuario, "SucessoLogin");
+                }
+                else
+                    MessagingCenter.Send<LoginException>(new LoginException("Usuário ou senha inválidos"), "FalhaLogin");
+            }
         }
     }
 
